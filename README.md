@@ -20,8 +20,7 @@ View your app in AI Studio: https://ai.studio/apps/drive/1sIP9CMnM546fai7cUDgthS
    `npm run dev`
 
 
-ChatGPT said:
-Scrum AI Master — README
+# Scrum AI Master — README
 Overview
 
 Scrum AI Master is an autonomous Scrum management system built with Python, FastAPI, and AI agents. It accepts audio, video, or text updates from daily stand-ups, converts them into text using Google Speech-to-Text with diarization, summarizes key points, and automatically extracts actionable tasks.
