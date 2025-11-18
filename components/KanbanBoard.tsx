@@ -27,7 +27,7 @@ const KanbanColumn: React.FC<{ title: TaskStatus; tasks: Task[]; teamMembers: Te
   const sortedTasks = [...tasks].sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 flex-1">
+    <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 flex-1 min-w-72">
       <div className="flex items-center mb-4">
         <span className={`h-2.5 w-2.5 rounded-full ${statusColorMap[title]} mr-2`}></span>
         <h3 className="font-semibold text-gray-800 dark:text-gray-200">{title}</h3>
@@ -48,7 +48,7 @@ export const KanbanBoard: React.FC<KanbanBoardProps> = ({ tasks, teamMembers, up
   return (
     <div className="bg-white dark:bg-gray-800/50 p-6 rounded-2xl shadow-lg">
       <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">SAM Task Board</h2>
-      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 overflow-x-auto pb-4">
         {statuses.map(status => (
           <KanbanColumn
             key={status}
