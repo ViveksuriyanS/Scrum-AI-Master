@@ -1,13 +1,13 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
 import { Dashboard } from './components/Dashboard';
 import { Task, TeamMember, Meeting, TaskStatus, User } from './types';
+import { INITIAL_TASKS, TEAM_MEMBERS } from './constants';
 import { TaskBoardPage } from './components/TaskBoardPage';
 import { TeamMembersPage } from './components/TeamMembersPage';
 import { SettingsPage } from './components/SettingsPage';
 import { Login } from './components/Login';
-import { loadState, saveState } from './services/dataService';
 
 export type Page = 'Dashboard' | 'Task Board' | 'Team Members' | 'Settings';
 
@@ -18,21 +18,14 @@ const App: React.FC = () => {
     picture: 'https://i.pravatar.cc/150?u=scrum-master'
   });
   const [currentPage, setCurrentPage] = useState<Page>('Dashboard');
-  
-  const [initialState] = useState(loadState());
-  const [tasks, setTasks] = useState<Task[]>(initialState.tasks);
-  const [teamMembers, setTeamMembers] = useState<TeamMember[]>(initialState.teamMembers);
-  
+  const [tasks, setTasks] = useState<Task[]>(INITIAL_TASKS);
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>(TEAM_MEMBERS);
   const [meeting, setMeeting] = useState<Meeting | null>({
     time: '09:30 AM',
     scheduled: true,
-    attendees: teamMembers.map(m => m.id)
+    attendees: TEAM_MEMBERS.map(m => m.id)
   });
   const [reviewTask, setReviewTask] = useState<Task | null>(null);
-
-  useEffect(() => {
-    saveState({ tasks, teamMembers });
-  }, [tasks, teamMembers]);
 
   const updateTaskStatus = useCallback((taskId: string, newStatus: TaskStatus) => {
     const taskToUpdate = tasks.find(t => t.id === taskId);
