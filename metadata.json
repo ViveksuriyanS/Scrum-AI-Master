@@ -1,0 +1,5 @@
+{
+  "name": "Scrum AI Master",
+  "description": "An AI-powered Scrum Master application to streamline daily stand-ups, task management, and team reporting. It uses AI to schedule meetings, summarize updates, allocate tasks, and provide historical insights to keep your sprint on track.",
+  "requestFramePermissions": []
+}
